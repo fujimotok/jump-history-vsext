@@ -16,7 +16,7 @@
             <Style TargetType="ListView" BasedOn="{StaticResource {x:Static vsshell:VsResourceKeys.ThemedDialogListViewStyleKey}}" />
             <Style TargetType="ListViewItem" BasedOn="{StaticResource {x:Static vsshell:VsResourceKeys.ThemedDialogListViewItemGridStyleKey}}" />
         </Grid.Resources>
-        <ListView x:Name="list" ItemsSource="{Binding LineInfos}" SelectedItem="{Binding SelectedItem}">
+        <ListView x:Name="list" ItemsSource="{Binding LineInfos}" SelectedItem="{Binding SelectedItem}" MouseDoubleClick="list_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name"
