@@ -25,10 +25,13 @@ namespace jump_history
         {
             this.Caption = "Jump History";
 
+            ThreadHelper.ThrowIfNotOnUIThread();
+            EnvDTE.DTE dte = ServiceProvider.GlobalProvider.GetService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
+
             // This is the user control hosted by the tool window; Note that, even if this class implements IDisposable,
             // we are not calling Dispose on this object. This is because ToolWindowPane calls Dispose on
             // the object returned by the Content property.
-            this.Content = new ToolWindow1Control();
+            this.Content = new ToolWindow1Control() { DataContext = new ToolWindow1VM(dte) };
         }
     }
 }
