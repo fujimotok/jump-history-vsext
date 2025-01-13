@@ -95,7 +95,9 @@ namespace jump_history
         private void LogCommand(bool isSrc)
         {
             var info = GetLineInfo(isSrc);
-            this.LineInfos.Add(info);
+
+            // 表示を逆順にしたいので先頭に追加
+            this.LineInfos.Insert(0, info);
         }
 
         private LineInfo GetLineInfo(bool isSrc)
@@ -137,8 +139,9 @@ namespace jump_history
 
             // 選択を元に戻す
             selection.MoveToLineAndOffset(originalLine, originalColumn);
-            
-            return lineText;
+
+            // 先頭のスペース・タブは削除
+            return lineText.TrimStart();
         }
     }
 }
